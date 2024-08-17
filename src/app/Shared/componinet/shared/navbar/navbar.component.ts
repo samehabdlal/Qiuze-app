@@ -16,7 +16,6 @@ export class NavbarComponent implements OnInit , OnDestroy{
   ngOnInit(): void {
    this.userssupscriptions=this.servec.user.subscribe({
     next:user=>{this.users=user
-      console.log(user);
     }
    })
   }

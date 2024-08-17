@@ -21,7 +21,7 @@
       <tr  *ngFor="let item of students">
         <td>{{item?.id}}</td>
         <td>{{item?.username}}</td>
-         <td *ngFor="let items of item.subjects">{{items?.namequize ? items?.namequize : '_'}}</td>
+         <td *ngFor="let items of item.subjects">{{items?.namequize ? items.namequize : '+'}}</td>
         <td *ngFor="let items of item.subjects">{{items?.degree ? items?.degree :'_'}}</td>
       </tr>
       

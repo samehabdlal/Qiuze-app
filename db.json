@@ -1,29 +1,15 @@
 {
   "students": [
     {
-      "id": "4f8d",
-      "username": "mohmed",
-      "email": "test1@gmal.com",
-      "password": "0000",
-      "subjects": [
-        {
-          "name": "getter",
-          "id": "ef47",
-          "degree": 1,
-          "namequize": "رياضيات"
-        }
-      ]
-    },
-    {
-      "id": "8ef1",
+      "id": "9825",
       "username": "ahmed",
-      "email": "Sameh.ashraf@gmil.com",
-      "password": "0000",
+      "email": "sameh@jk",
+      "password": "12345",
       "subjects": [
         {
           "name": "getter",
-          "id": "ef47",
-          "degree": 0,
+          "id": "62e2",
+          "degree": 1,
           "namequize": "رياضيات"
         }
       ]

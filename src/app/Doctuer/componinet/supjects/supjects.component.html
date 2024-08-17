@@ -29,8 +29,7 @@
 
     </div>
 </div>
-<!-- creat exam -->
- <div class="bg" *ngIf="(Allsupjects().length==0 && user()?.role==='students') || (Allsupjects().length==0 && user()?.role=='Doctuer')">
+ <div class="bg" *ngIf="Allsupjects().length==0 && user()?.role==='students' || (Allsupjects().length==0 && user()?.role=='Doctuer')">
  <br>
  <br>
  <br>

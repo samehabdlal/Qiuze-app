@@ -1,0 +1,31 @@
+<br>
+<br>
+<br>
+<button class="button float-start">
+  <span> درجات الطلاب</span>
+</button>
+<hr class="text-center">
+<br>
+<div class="container">
+    <div class="row" >
+<table class="table-dark"  > 
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">الاسم</th>
+        <th scope="col">الماده</th>
+        <th scope="col">الدرجه</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let item of students">
+        <td>{{item?.id}}</td>
+        <td>{{item?.username}}</td>
+         <td *ngFor="let items of item.subjects">{{items?.namequize ? items?.namequize : '_'}}</td>
+        <td *ngFor="let items of item.subjects">{{items?.degree ? items?.degree :'_'}}</td>
+      </tr>
+      
+    </tbody>
+</table>
+    </div>
+</div>

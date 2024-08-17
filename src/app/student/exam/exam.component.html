@@ -1,0 +1,103 @@
+<br />
+<br />
+<br />
+<div class="examBox" *ngIf="vewbtn && valdtionvewrepet">
+  <div class="examhead text-center" >
+    <h2>اختبار اللفة {{ examitem()?.name }}</h2>
+  </div>
+  <div class="quizBox" *ngFor="let item of examitem().quiz; let i = index">
+    <br />
+    <strong
+      ><span class="text-danger">
+        {{ i + 1 }}# سوال رقم
+        <br />
+        <br />
+      </span>
+      {{ item.qution }}</strong
+    >
+    <!-- answar 1 -->
+    <div class="d-flex justify-content-center gap-6">
+      <div class="row mt-3">
+        <div class="col-md-6 col-sm-12">
+          <div class="form-check" style="cursor: pointer">
+            <mat-radio-button 
+            value="{{item.Answer1}}"
+             color="warn"
+             *ngIf="admin?.role === 'students' && valdtionvewrepet"
+             (change)="Ongetanswaer($event)"
+             name="{{i}}"
+             ></mat-radio-button>
+            <label class="form-check-label">
+              <strong style="font-style: italic"> A.</strong> {{ item.Answer1 }}
+            </label>
+          </div>
+        </div>
+        <!-- answar 2 -->
+        <div class="col-md-6 col-sm-12">
+          <div class="form-check">
+            <mat-radio-button 
+            value="{{item.Answer2}}"
+             color="warn"
+             *ngIf="admin?.role === 'students' && valdtionvewrepet"
+             (change)="Ongetanswaer($event)"
+             name="{{i}}"
+             ></mat-radio-button>
+            <label class="form-check-label">
+              <strong style="font-style: italic">B.</strong> {{ item.Answer2 }}
+            </label>
+          </div>
+        </div>
+        <!-- answar 3 -->
+        <div class="col-md-6 col-sm-12">
+          <div class="form-check">
+            <mat-radio-button 
+            value="{{item.Answer3}}"
+             color="warn"
+             *ngIf="admin?.role === 'students' && valdtionvewrepet"
+             (change)="Ongetanswaer($event)"
+             name="{{i}}"
+             ></mat-radio-button>
+            <label class="form-check-label">
+              <strong style="font-style: italic">C.</strong> {{ item.Answer3 }}
+            </label>
+          </div>
+        </div>
+        <!-- answar 4 -->
+        <div class="col-md-6 col-sm-12">
+          <div class="form-check">
+            <mat-radio-button 
+            value="{{item.Answer4}}"
+             color="warn"
+             *ngIf="admin?.role === 'students' && valdtionvewrepet"
+             (change)="Ongetanswaer($event)"
+             name="{{i}}"
+             ></mat-radio-button>
+            <label 
+            class="form-check-label">
+              <strong style="font-style: italic">D.</strong> {{ item.Answer4 }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--delet quize item -->
+    <button
+      class="mx-1 btn btn-danger rounded-circle"
+      *ngIf="admin?.role === 'Doctuer'"
+      (click)="OndeletQuize(item.id, i)"
+    >
+      <i class="fa-solid fa-trash"></i>
+    </button>
+    <!--end delet quize item -->
+    <hr />
+  </div>
+  <!-- -->
+  <div class="text-center" *ngIf="admin?.role === 'students'">
+    <button class="btn btn-success px-5 fs-5" *ngIf="vewbtn && valdtionvewrepet" (click)="getreslet()">النتيجة</button>
+  </div>
+</div>
+<h1 class="text-center mt-5" *ngIf="examitem().quiz?.length === 0">
+  لا يوجد اساله
+</h1>
+<h1 class="text-center mt-5" *ngIf="!vewbtn ">{{total==0 ?'راسب':'نتيجتك هي'+examitem().quiz.length+'/'+total}}</h1>
+<h1 class="text-center mt-5" *ngIf="!valdtionvewrepet && admin?.role === 'students'" routerLink="/supjects" class="bg-danger m-auto w-auto">الصفحه الريسيه<i class="fa-solid fa-right-from-bracket"></i></h1>

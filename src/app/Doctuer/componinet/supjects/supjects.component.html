@@ -1,0 +1,40 @@
+<div class="subjectBox " >
+    <div class="row m-3"> 
+        <div class="col-md-4 col-sm-12"   *ngFor="let item of Allsupjects() ;let i=index"  >
+          <div  *ngIf="item.name" >
+            <div class="namesubject" routerLink="/exam/{{item?.id}}">
+              <div> {{item.name |uppercase}}</div>
+          </div>
+          <div class="subBtn" >
+              <button   class="mx-1 btn btn-danger rounded-circle"  *ngIf="user()?.role==='Doctuer'" (click)="OndeletQuize(item.id,i)"><i class="fa-solid fa-trash"></i></button>
+              <button  class="mx-1  btn btn-primary "  routerLink="/exam/{{item?.id}}" *ngIf="user()?.role=='Doctuer'" >عرض</button>
+              <button *ngIf="user()?.role==='students' " routerLink="/exam/{{item?.id}}" class="button-with-icon">
+                  <svg
+                    class="icon"
+                    id="Play"
+                    viewBox="0 0 48 48"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="color000000 svgShape"
+                      fill="#ffffff"
+                      d="M12 39c-.549 0-1.095-.15-1.578-.447A3.008 3.008 0 0 1 9 36V12c0-1.041.54-2.007 1.422-2.553a3.014 3.014 0 0 1 2.919-.132l24 12a3.003 3.003 0 0 1 0 5.37l-24 12c-.42.21-.885.315-1.341.315z"
+                    ></path>
+                  </svg>
+                  <strong class="text">بدا</strong>
+                </button>
+          </div>
+          </div>
+          
+
+    </div>
+</div>
+<!-- creat exam -->
+ <div class="bg" *ngIf="(Allsupjects().length==0 && user()?.role==='students') || (Allsupjects().length==0 && user()?.role=='Doctuer')">
+ <br>
+ <br>
+ <br>
+ <br>
+  <h1 style="z-index: 100; " *ngIf="Allsupjects().length==0 && user()?.role==='students' ">لا يوجد امتحانات اليوم</h1>
+  <a style="z-index: 100;" *ngIf="Allsupjects().length==0 && user()?.role=='Doctuer'" routerLink="/new_exam" class="nav-link ">انشاا امتحان</a>
+ </div>

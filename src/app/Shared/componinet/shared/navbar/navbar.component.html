@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+  <div class="container-fluid ">
+    <a class="navbar-brand text-white" >
+      <i class="fa-solid fa-book" style="color: #fdfff8;"></i>
+   فاينل
+    </a>
+    <label class="hamburger">
+      <input type="checkbox"
+        class="navbar-toggler"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      >
+      <svg viewBox="0 0 32 32">
+        <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+        <path class="line" d="M7 16 27 16"></path>
+      </svg>
+    </label>
+    <!-- content -->
+    <div class="collapse navbar-collapse"  id="navbarNavAltMarkup">
+      <div class="navbar-nav m-auto ">
+        <a class="nav-link " routerLinkActive="active" *ngIf="users.role==='Doctuer'" routerLink="/new_exam">اختبار جديد</a>
+        <a class="nav-link" routerLinkActive="active" *ngIf="users.role==='Doctuer'" routerLink="/student">الطلاب</a>
+        <a class="nav-link" routerLinkActive="active" *ngIf="users.username" routerLink="/supjects">المواد</a>
+      </div>
+      <!-- log out and log in and user name -->
+      <div class="d-flex gap-2 align-items-center">
+        <a class="toogle nav-link username" 
+        mat-button [matMenuTriggerFor]="menu">
+        <i class="fa-solid use fa-user" style="color: white;"></i>  {{users?.username ? users?.username :''}} 
+        </a>
+        <mat-menu  #menu="matMenu">
+          <button *ngIf="users.username==null"  routerLink="/regster"   mat-menu-item>
+            <i class="fa-solid fa-arrow-left"></i>
+            تسجيل دخول</button>
+          <button *ngIf="users.username" (click)="logout()"   mat-menu-item>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            تسجيل خروخ</button>
+        </mat-menu>
+      </div>
+      <!--  -->
+    </div>
+  </div>
+</nav>

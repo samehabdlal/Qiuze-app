@@ -1,0 +1,115 @@
+@defer (on immediate) {
+<section class="h-100 gradient-form mt-3" style="background-color: #eee">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <i class="fa-solid fa-book" style="font-size: 40px"></i>
+                  <h4 class="mt-1 mb-5 pb-1">امتحان الفاينل</h4>
+                </div>
+                <form [formGroup]="loginForms" (ngSubmit)="supmit()">
+                  <p>يرجى تسجيل الدخول إلى حسابك</p>
+                  <mat-radio-group
+                  formControlName="type"
+                    (change)="onaddtype($event)"
+                    class="checkbox"
+                  >
+                    <mat-radio-button
+                      class="example-radio-button"
+                      value="Doctuer"
+                      >دكتور</mat-radio-button
+                    >
+                    <mat-radio-button
+                      class="example-radio-button"
+                      value="students"
+                      >طالب</mat-radio-button
+                    >
+                  </mat-radio-group>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input
+                      formControlName="email"
+                      type="email"
+                      id="form2Example11"
+                      class="form-control"
+                      [class.is-invalid]="getdata('email')?.invalid &&getdata('email')?.touched"
+                      [class.is-valid]="getdata('email')?.valid"
+                      placeholder="رقم الهاتف أو عنوان البريد الإلكتروني"
+                    />
+                    <label class="form-label" for="form2Example11"
+                      >اسم المستخدم
+                    </label>
+                    <small class="text-danger float-end" *ngIf="getdata('email')?.invalid &&getdata('email')?.touched ">يجب ادخال الاميل</small>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input
+                      formControlName="password"
+                      type="password"
+                      id="form2Example22"
+                      class="form-control"
+                      [class.is-invalid]="getdata('password')?.invalid &&getdata('password')?.touched"
+                      [class.is-valid]="getdata('password')?.valid"
+                    />
+                    <label class="form-label" for="form2Example22"
+                      >كلمة المرور</label>
+                    <small class="text-danger float-end" *ngIf="getdata('password')?.invalid &&getdata('password')?.touched ">يجب ادخال كلمه المرور</small>
+
+                  </div>
+
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <button
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-secondary w-100"
+                      [disabled]="loginForms.invalid"
+                      type="submit"
+                    >
+                      تسجيل الدخول
+                    </button>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-center pb-4"
+                  >
+                    <p class="mb-0 me-2">ليس لديك حساب؟</p>
+                    <button
+                      type="button"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-outline-danger"
+                      routerLink="/regster"
+                    >
+                      انشاء حساب
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4" style="list-style-type: circle">
+                  <i
+                    class="fa-solid fa-pen"
+                    style="color: rgba(124, 7, 7, 0.87)"
+                  ></i>
+                  اتبع التعليمات
+                </h4>
+                <ul *ngFor="let t of directionsstudents">
+                  <li><h5 class="texts">{{t}}</h5></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+}
+@loading {
+  <h1 class="text-center">loading....</h1>
+}
